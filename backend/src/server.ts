@@ -9,8 +9,10 @@ import { logger } from "./config/logger";
 const server  = http.createServer(app);
 
 export const io = new Server(server, {
-    cors: { origin: "*"}
-});
+    path: '/ws',
+    cors: { origin: "*", credentials: true}
+}
+);
 
 async function bootstrap(){
 
@@ -23,7 +25,16 @@ async function bootstrap(){
 }
 
 io.on("connection", (socket)=>{
-    console.log("user connected", socket.id);
+    logger.info({ socketId: socket.id }, "WS client connected");
+
+    socket.on("ping", (data: any)=>{
+        logger.info({data}, "ping received");
+        socket.emit("pong", {message: "pong"});
+    })
+
+  socket.on("disconnect", (reason) => {
+    logger.warn({ socketId: socket.id, reason }, "WS disconnected");
+  });
 })
 
 bootstrap()

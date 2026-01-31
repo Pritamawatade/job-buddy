@@ -11,6 +11,7 @@ const app = express();
 app.use(cors({origin: true, credentials: true}));
 app.use(helmet());
 app.use(morgan("dev"));
+app.use(express.json())
 
 app.get("/health", (_, res) => {
     res.status(200).json({ status: "ok" });

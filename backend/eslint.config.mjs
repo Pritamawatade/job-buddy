@@ -14,32 +14,41 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default defineConfig([globalIgnores(["**/node_modules", "**/dist", "**/build"]), {
-    extends: compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended"),
+export default defineConfig([
+    globalIgnores(["**/node_modules", "**/dist", "**/build"]),
+    // Base config for all files
+    {
+        extends: compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended"),
 
-    languageOptions: {
-        globals: {
-            ...globals.node,
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+
+            parser: tsParser,
+            ecmaVersion: 2021,
+            sourceType: "module",
         },
 
-        parser: tsParser,
-        ecmaVersion: 2021,
-        sourceType: "module",
-
-        parserOptions: {
-            project: "./tsconfig.json",
+        rules: {
+            "no-console": "warn",
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": "error",
+            "@typescript-eslint/no-explicit-any": "warn",
+            eqeqeq: "error",
+            "no-var": "error",
+            "prefer-const": "error",
+            semi: ["error", "always"],
+            quotes: ["error", "double"],
         },
     },
-
-    rules: {
-        "no-console": "warn",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/no-explicit-any": "warn",
-        eqeqeq: "error",
-        "no-var": "error",
-        "prefer-const": "error",
-        semi: ["error", "always"],
-        quotes: ["error", "double"],
+    // Type-aware linting only for files in the TypeScript project
+    {
+        files: ["src/**/*.ts", "generated/**/*.ts"],
+        languageOptions: {
+            parserOptions: {
+                project: "./tsconfig.json",
+            },
+        },
     },
-}]);
+]);

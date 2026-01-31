@@ -1,16 +1,16 @@
-import { Server } from 'socket.io';
-import http from 'http';
-import app from './app';
-import { env } from './config/env';
-import { connectPostgres } from './config/postgres';
-import { mongodbConnect } from './config/mongodb';
-import { logger } from './config/logger';
+import { Server } from "socket.io";
+import http from "http";
+import app from "./app";
+import { env } from "./config/env";
+import { connectPostgres } from "./config/postgres";
+import { mongodbConnect } from "./config/mongodb";
+import { logger } from "./config/logger";
 
 const server = http.createServer(app);
 
 export const io = new Server(server, {
-    path: '/ws',
-    cors: { origin: '*', credentials: true },
+    path: "/ws",
+    cors: { origin: "*", credentials: true },
 });
 
 async function bootstrap() {
@@ -21,11 +21,11 @@ async function bootstrap() {
     });
 }
 
-io.on('connection', (socket) => {
-    logger.info({ socketId: socket.id }, 'WS client connected');
+io.on("connection", (socket) => {
+    logger.info({ socketId: socket.id }, "WS client connected");
 
-    socket.on('disconnect', (reason) => {
-        logger.warn({ socketId: socket.id, reason }, 'WS disconnected');
+    socket.on("disconnect", (reason) => {
+        logger.warn({ socketId: socket.id, reason }, "WS disconnected");
     });
 });
 

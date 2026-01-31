@@ -6,3 +6,5 @@ class ApiError extends Error {
         super(message);
     }
 }
+
+export default ApiError;

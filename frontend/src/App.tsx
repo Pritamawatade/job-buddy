@@ -16,7 +16,7 @@ function App() {
       });
 
     // Setup WebSocket event listeners
-    const handlePong = (data: any) => {
+    const handlePong = (data: number) => {
       console.log("Pong data received", data);
     };
 

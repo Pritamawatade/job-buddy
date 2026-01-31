@@ -1,0 +1,26 @@
+{
+  "name": "prepiq",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.24.0",
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "dev": "pnpm -w -r --parallel dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "build": "pnpm -w -r build",
+    "lint": "pnpm -w -r lint",
+    "format": "pnpm -w -r format",
+    "format:check": "pnpm -w -r format:check",
+    "type-check": "pnpm -w -r type-check",
+    "test": "pnpm -w -r test",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1",
+    "eslint": "^9.39.2",
+    "@typescript-eslint/parser": "^8.54.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0"
+  }
+}

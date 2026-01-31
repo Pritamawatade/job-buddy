@@ -1,5 +1,8 @@
-class ApiError extends Error{
-constructor(public statusCode: number, message: string){
-    super(message);
-}
+class ApiError extends Error {
+    constructor(
+        public statusCode: number,
+        message: string
+    ) {
+        super(message);
+    }
 }

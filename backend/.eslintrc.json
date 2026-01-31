@@ -22,7 +22,7 @@
     "no-var": "error",
     "prefer-const": "error",
     "semi": ["error", "always"],
-    "quotes": ["error", "double"]
+    "quotes": ["error", "single"]
   },
   "ignorePatterns": ["node_modules", "dist", "build"]
 }

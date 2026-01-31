@@ -40,5 +40,6 @@ export default defineConfig([{
         eqeqeq: "error",
         "no-var": "error",
         "prefer-const": "error",
+        quotes: ["error", "single"],
     },
 }]);

@@ -8,4 +8,4 @@ const envSchema = z.object({
   MONGO_URL: z.string(),
 });
 
-export const env = envSchema.parse(process.env)
+export const env = envSchema.parse(process.env);

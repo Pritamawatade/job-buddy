@@ -11,13 +11,13 @@ const app = express();
 app.use(cors({origin: true, credentials: true}));
 app.use(helmet());
 app.use(morgan("dev"));
-app.use(express.json())
+app.use(express.json());
 
 app.get("/health", (_, res) => {
     res.status(200).json({ status: "ok" });
   });
-app.use('/api/v1/auth', authRoutes)
-app.use('/api/v1/interview', interviewRoutes)
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/interview", interviewRoutes);
 
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 export default app;

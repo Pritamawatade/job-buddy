@@ -1,5 +1,5 @@
 import { PrismaClient } from "../../generated/prisma/client";
-import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaPg } from "@prisma/adapter-pg";
 import { logger } from "./logger";
 import { env } from "./env";
 
@@ -8,15 +8,15 @@ const adapter = new PrismaPg({ connectionString: env.DATABASE_URL });
 
 export const prisma = new PrismaClient({
     adapter,
-    log: ['error', 'warn']
+    log: ["error", "warn"]
 });
 
 export async function connectPostgres(){
     try {
         await prisma.$connect();
-        logger.info("postgres connected")
+        logger.info("postgres connected");
     } catch (error) {
-        logger.fatal(error, "postgres connection failed")
-        process.exit(1)
+        logger.fatal(error, "postgres connection failed");
+        process.exit(1);
     }
 }

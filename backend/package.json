@@ -11,7 +11,12 @@
     "lint": "eslint .",
     "test": "vitest",
     "prisma:generate": "prisma generate",
-    "prisma:migreate": "prisma migrate deploy"
+    "prisma:migreate": "prisma migrate deploy",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -34,10 +39,18 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "globals": "^17.2.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1",
     "prisma": "^7.3.0",
     "supertest": "^7.2.2",
     "tsx": "^4.21.0",

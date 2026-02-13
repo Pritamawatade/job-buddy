@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint .",
-    "test": "vitest",
+    "test": "vitest --run",
     "prisma:generate": "prisma generate",
     "prisma:migreate": "prisma migrate deploy",
     "lint:fix": "eslint . --ext .ts,.mjs --fix",

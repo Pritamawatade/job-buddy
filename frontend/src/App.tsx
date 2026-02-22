@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSocket } from "./hooks/useSocket";
 import { http } from "./api/http";
+import { Button } from "./components/ui/button";
 
 function App() {
   const { socket, connected } = useSocket();
@@ -23,7 +24,7 @@ function App() {
     if (connected && socket) {
       console.log("Setting up pong listener");
       socket.on("pong", handlePong);
-      
+
       // Send initial ping
       socket.emit("ping", { time: Date.now() });
     }
@@ -36,6 +37,7 @@ function App() {
       }
     };
   }, [connected, socket]);
+
 
   return (
     <div style={{ padding: 20 }}>
@@ -52,13 +54,14 @@ function App() {
         </b>
       </p>
 
-      <button
+      <Button
         onClick={() => {
           socket.emit("ping", { time: Date.now() });
         }}
       >
         Send WS Ping
-      </button>
+      </Button>
+    
     </div>
   );
 }

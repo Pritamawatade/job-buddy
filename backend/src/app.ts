@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import authRoutes from './modules/auth/auth.routes';
 import interviewRoutes from './modules/interview/itnerview.routes';
 import { errorMiddleware } from './middlewares/error.middleware';
+import ApiError from './utils/ApiError';
 
 const app = express();
 
@@ -18,6 +19,11 @@ app.get('/health', (_, res) => {
 });
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/interview', interviewRoutes);
+
+// 404 handler
+app.use((req, res, next) => {
+  next(new ApiError(404, `Route ${req.originalUrl} not found`));
+});
 
 app.use(errorMiddleware);
 export default app;

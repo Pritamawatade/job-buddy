@@ -16,7 +16,7 @@ export const io = new Server(server, {
 async function bootstrap() {
   await connectPostgres();
   await mongodbConnect();
-  server.listen(env.PORT, () => {
+  server.listen(env.PORT, '0.0.0.0', () => {
     logger.info(`server is running on port ${env.PORT}`);
   });
 }

@@ -6,6 +6,7 @@ const envSchema = z.object({
   JWT_SECRET: z.string(),
   DATABASE_URL: z.string(),
   MONGO_URL: z.string(),
+  OPENAI_API_KEY: z.string(),
 });
 
 export const env = envSchema.parse(process.env);
